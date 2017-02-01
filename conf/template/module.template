@@ -1,0 +1,70 @@
+${HASH}"!/bin/bash"
+${HASH}
+${HASH}" @brief   ${NAME}"
+${HASH}" @version ${VERSION}"
+${HASH}" @date    ${DATE}"
+${HASH}" @company ${COMPANY}"
+${HASH}" @author  ${AUTHOR}"
+${HASH}
+"UTIL_${UMNAME}=${NAME}"
+"UTIL_${UMNAME}_VERSION=ver.1.0"
+"UTIL=/root/scripts/sh_util/\\\${UTIL_${UMNAME}_VERSION}"
+"UTIL_${UMNAME}_CFG=\\\${UTIL}/conf/\\\${UTIL_${UMNAME}}.cfg"
+"UTIL_LOG=\\\${UTIL}/log"
+
+".${TAB}\\\${UTIL}/bin/devel.sh"
+".${TAB}\\\${UTIL}/bin/usage.sh"
+".${TAB}\\\${UTIL}/bin/load_util_conf.sh"
+".${TAB}\\\${UTIL}/bin/check_tool.sh"
+".${TAB}\\\${UTIL}/bin/logging.sh"
+".${TAB}\\\${UTIL}/bin/send_mail.sh"
+
+"declare -A ${UMNAME}_USAGE=("
+"${TAB}[USAGE_TOOL]=\\\"__${NAME}\\\""
+"${TAB}[USAGE_ARG1]=\\\"[ARG] Bash module argument\\\""
+"${TAB}[USAGE_EX_PRE]=\\\"# Example\\\""
+"${TAB}[USAGE_EX]=\\\"__${NAME} ARG\\\""
+")"
+
+"TOOL_DEBUG=\\\"false\\\""
+
+${HASH}
+${HASH}" @brief  TODO"
+${HASH}" @param  TODO"
+${HASH}
+${HASH}" @usage"
+${HASH}' @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+${HASH}
+${HASH}" local ARG=\\\"Some Argument\\\""
+${HASH}" __${NAME} \\\"\\\$ARG\\\""
+${HASH}" STATUS=\\\$?"
+${HASH}
+${HASH}" if [ \\\$STATUS -eq \\\$SUCCESS ]; then"
+${HASH}"${TAB}# true"
+${HASH}" else"
+${HASH}"${TAB}# false"
+${HASH}" fi"
+${HASH}
+"function __${NAME}() {"
+${TAB}"local ARG=\\\$1"
+${TAB}"if [ -n \\\"\\\${ARG}\\\" ]; then"
+${TAB}${TAB}"local FUNC=\\\${FUNCNAME[0]} MSG=\\\"None\\\" STATUS"
+${TAB}${TAB}"MSG=\\\"Loading basic and util configuration!\\\""
+${TAB}${TAB}"__info_debug_message \\\"\\\$MSG\\\" \\\"\\\$FUNC\\\" \\\"\\\$UTIL_${UMNAME}\\\""
+${TAB}${TAB}"declare -A config_${NAME}=()"
+${TAB}${TAB}"__load_util_conf \\\"\\\$${UMNAME}_UTIL_CFG\\\" config_${NAME}"
+${TAB}${TAB}"STATUS=\\\$?"
+${TAB}${TAB}"if [ \\\$STATUS -eq \\\$NOT_SUCCESS ]; then"
+${TAB}${TAB}${TAB}"MSG=\\\"Force exit!\\\""
+${TAB}${TAB}${TAB}"__info_debug_message_end \\\"\\\$MSG\\\" \\\"\\\$FUNC\\\" \\\"\\\$UTIL_${UMNAME}\\\""
+${TAB}${TAB}${TAB}"return \\\$NOT_SUCCESS"
+${TAB}${TAB}"fi"
+${TAB}${TAB}${HASH}
+${TAB}${TAB}${HASH}" Code goes here"
+${TAB}${TAB}${HASH}
+${TAB}${TAB}"return \\\$SUCCESS"
+${TAB}"fi"
+${TAB}"__usage \\\$${UMNAME}_USAGE"
+${TAB}"return \\\$NOT_SUCCESS"
+"}"
+
