@@ -64,7 +64,7 @@ ${TAB}${TAB}${HASH}" Code goes here"
 ${TAB}${TAB}${HASH}
 ${TAB}${TAB}"return \\\$SUCCESS"
 ${TAB}"fi"
-${TAB}"__usage \\\$${UMNAME}_USAGE"
+${TAB}"__usage ${UMNAME}_USAGE"
 ${TAB}"return \\\$NOT_SUCCESS"
 "}"
 
