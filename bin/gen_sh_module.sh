@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# @brief   Generating Bash script module
+# @brief   Generating Bash Script Module
 # @version ver.1.0
 # @date    Wed May 11 13:00:19 CEST 2016
 # @company Frobas IT Department, www.frobas.com 2016
@@ -16,7 +16,6 @@ UTIL_LOG=${UTIL}/log
 .	${UTIL}/bin/check_root.sh
 .	${UTIL}/bin/check_tool.sh
 .	${UTIL}/bin/logging.sh
-.	${UTIL}/bin/send_mail.sh
 .	${UTIL}/bin/load_conf.sh
 .	${UTIL}/bin/load_util_conf.sh
 .	${UTIL}/bin/progress_bar.sh
@@ -28,14 +27,14 @@ GEN_SH_MODULE_CFG=${GEN_SH_MODULE_HOME}/conf/${GEN_SH_MODULE_TOOL}.cfg
 GEN_SH_MODULE_UTIL_CFG=${GEN_SH_MODULE_HOME}/conf/${GEN_SH_MODULE_TOOL}_util.cfg
 GEN_SH_MODULE_LOG=${GEN_SH_MODULE_HOME}/log
 
-declare -A GENSHM_USAGE=(
+declare -A GEN_SH_MODULE_USAGE=(
 	[USAGE_TOOL]="${GEN_SH_MODULE_TOOL}"
-	[USAGE_ARG1]="[NAME] Name of Bash module (file name)"
+	[USAGE_ARG1]="[MODULE NAME] Name of Bash Script Module (file name)"
 	[USAGE_EX_PRE]="# Create FileCheck module"
 	[USAGE_EX]="${GEN_SH_MODULE_TOOL} FileCheck"
 )
 
-declare -A GENSHM_LOGGING=(
+declare -A GEN_SH_MODULE_LOGGING=(
 	[LOG_TOOL]="${GEN_SH_MODULE_TOOL}"
 	[LOG_FLAG]="info"
 	[LOG_PATH]="${GEN_SH_MODULE_LOG}"
@@ -49,14 +48,16 @@ declare -A PB_STRUCTURE=(
 )
 
 TOOL_DEBUG="false"
+TOOL_LOG="false"
+TOOL_NOTIFY="false"
 
 #
 # @brief  Main function 
-# @param  Value required name of Bash script module
+# @param  Value required name of Bash Script Module
 # @retval Function __gen_sh_module exit with integer value
 #			0   - tool finished with success operation 
 #			128 - missing argument(s) from cli 
-#			129 - failed to load tool script configuration from files 
+#			129 - failed to load tool script configuration from files
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -87,6 +88,9 @@ function __gen_sh_module() {
 			__info_debug_message_end "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
 			exit 129
 		fi
+		TOOL_DEBUG=${config_gen_sh_module[DEBUGGING]}
+		TOOL_LOG=${config_gen_sh_module[LOGGING]}
+		TOOL_NOTIFY=${config_gen_sh_module[EMAILING]}
 		local DATE=$(date) VERSION=${config_gen_sh_module_util[VERSION]}
 		local COMPANY=${config_gen_sh_module_util[COMPANY]}
 		local AUTHOR=${config_gen_sh_module_util[AUTHOR]}
@@ -94,6 +98,9 @@ function __gen_sh_module() {
 		local HASH="#" TAB="	"
 		MSG="Generating shell module [${NAME}.sh]!"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
+		GEN_SH_MODULE_LOGGING[LOG_FLAG]="info"
+		GEN_SH_MODULE_LOGGING[LOG_MSGE]="$MSG"
+		__logging GEN_SH_MODULE_LOGGING
 		local UMNAME=$(echo ${NAME} | tr 'a-z' 'A-Z') SHMLINE
 		while read SHMLINE
 		do
@@ -103,14 +110,18 @@ function __gen_sh_module() {
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
 		local USRID=${config_gen_sh_module_util[UID]}
 		local GRPID=${config_gen_sh_module_util[GID]}
-		eval "chown ${USRID}.${GRPID} \"${NAME}.sh\""
+		eval "chown ${USRID}.${GRPID} ${NAME}.sh"
 		MSG="Set permission!"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
 		eval "chmod 700 ${NAME}.sh"
+		MSG="Generated shell module [${NAME}.sh]"
+		GEN_SH_MODULE_LOGGING[LOG_FLAG]="info"
+		GEN_SH_MODULE_LOGGING[LOG_MSGE]="$MSG"
+		__logging GEN_SH_MODULE_LOGGING
 		__info_debug_message_end "Done" "$FUNC" "$GEN_SH_MODULE_TOOL"
 		exit 0
 	fi
-	__usage GENSHM_USAGE
+	__usage GEN_SH_MODULE_USAGE
 	exit 128
 }
 
@@ -121,7 +132,7 @@ function __gen_sh_module() {
 #			0   - tool finished with success operation 
 # 			127 - run tool script as root user from cli
 #			128 - missing argument(s) from cli 
-#			129 - failed to load tool script configuration from files 
+#			129 - failed to load tool script configuration from files
 #
 printf "\n%s\n%s\n\n" "${GEN_SH_MODULE_TOOL} ${GEN_SH_MODULE_VERSION}" "`date`"
 __check_root

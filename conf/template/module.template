@@ -27,6 +27,8 @@ ${HASH}
 ")"
 
 "TOOL_DEBUG=\\\"false\\\""
+"TOOL_LOG=\\\"false\\\""
+"TOOL_NOTIFY=\\\"false\\\""
 
 ${HASH}
 ${HASH}" @brief  TODO"
