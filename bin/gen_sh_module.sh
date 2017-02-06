@@ -53,17 +53,17 @@ TOOL_NOTIFY="false"
 
 #
 # @brief  Main function 
-# @param  Value required name of Bash Script Module
+# @param  Value required name of bash script module
 # @retval Function __gen_sh_module exit with integer value
-#			0   - tool finished with success operation 
-#			128 - missing argument(s) from cli 
+#			0   - tool finished with success operation
+#			128 - missing argument(s) from cli
 #			129 - failed to load tool script configuration from files
 #
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #
-# NAME="FileCheck"
-# __gen_sh_module "$NAME"
+# local NAME="FileCheck"
+# __gen_sh_module "${NAME}"
 #
 function __gen_sh_module() {
 	local NAME=$1
@@ -94,31 +94,34 @@ function __gen_sh_module() {
 		local DATE=$(date) VERSION=${config_gen_sh_module_util[VERSION]}
 		local COMPANY=${config_gen_sh_module_util[COMPANY]}
 		local AUTHOR=${config_gen_sh_module_util[AUTHOR]}
-		local MODULE_TEMPLATE=${config_gen_sh_module_util[MODULE_TEMPLATE]}
-		local HASH="#" TAB="	"
-		MSG="Generating shell module [${NAME}.sh]!"
+		local MT=${config_gen_sh_module_util[MT]} SHF="${NAME}.sh"
+		local MTF="${GEN_SH_MODULE_HOME}/conf/${MT}" SHML TREE
+		local HASH="#" TAB="	" UMNAME=$(echo ${NAME} | tr 'a-z' 'A-Z')
+		MSG="Generating file [${SHF}]"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
-		GEN_SH_MODULE_LOGGING[LOG_FLAG]="info"
-		GEN_SH_MODULE_LOGGING[LOG_MSGE]="$MSG"
-		__logging GEN_SH_MODULE_LOGGING
-		local UMNAME=$(echo ${NAME} | tr 'a-z' 'A-Z') SHMLINE
-		while read SHMLINE
+		while read SHML
 		do
-			eval echo "$SHMLINE" >> "${NAME}.sh"
-		done < "${GEN_SH_MODULE_HOME}/conf/${MODULE_TEMPLATE}"
+			eval echo "${SHML}" >> ${SHF}
+		done < ${MTF}
 		MSG="Set owner!"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
 		local USRID=${config_gen_sh_module_util[UID]}
 		local GRPID=${config_gen_sh_module_util[GID]}
-		eval "chown ${USRID}.${GRPID} ${NAME}.sh"
+		eval "chown ${USRID}.${GRPID} ${SHF}"
 		MSG="Set permission!"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
-		eval "chmod 700 ${NAME}.sh"
-		MSG="Generated shell module [${NAME}.sh]"
+		eval "chmod 700 ${SHF}"
+		MSG="Generated shell module [${SHF}]"
 		GEN_SH_MODULE_LOGGING[LOG_FLAG]="info"
 		GEN_SH_MODULE_LOGGING[LOG_MSGE]="$MSG"
 		__logging GEN_SH_MODULE_LOGGING
 		__info_debug_message_end "Done" "$FUNC" "$GEN_SH_MODULE_TOOL"
+		TREE=$(which tree)
+		__check_tool "${TREE}"
+		STATUS=$?
+		if [ $STATUS -eq $SUCCESS ]; then
+			eval "${TREE} -L 3 ${PROJECT}/"
+		fi
 		exit 0
 	fi
 	__usage GEN_SH_MODULE_USAGE
@@ -129,9 +132,9 @@ function __gen_sh_module() {
 # @brief   Main entry point
 # @param   Value required shell module name
 # @exitval Script tool gen_sh_module exit with integer value
-#			0   - tool finished with success operation 
-# 			127 - run tool script as root user from cli
-#			128 - missing argument(s) from cli 
+#			0   - tool finished with success operation
+#			127 - run tool script as root user from cli
+#			128 - missing argument(s) from cli
 #			129 - failed to load tool script configuration from files
 #
 printf "\n%s\n%s\n\n" "${GEN_SH_MODULE_TOOL} ${GEN_SH_MODULE_VERSION}" "`date`"
