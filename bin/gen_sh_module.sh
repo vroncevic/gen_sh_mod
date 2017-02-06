@@ -120,7 +120,7 @@ function __gen_sh_module() {
 		__check_tool "${TREE}"
 		STATUS=$?
 		if [ $STATUS -eq $SUCCESS ]; then
-			eval "${TREE} -L 3 ${PROJECT}/"
+			eval "${TREE} -L 3 ${SHF}"
 		fi
 		exit 0
 	fi
