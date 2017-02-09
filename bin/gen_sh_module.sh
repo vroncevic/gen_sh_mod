@@ -62,12 +62,12 @@ TOOL_NOTIFY="false"
 # @usage
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #
-# local NAME="FileCheck"
-# __gen_sh_module "${NAME}"
+# local MN="FileCheck"
+# __gen_sh_module "${MN}"
 #
 function __gen_sh_module() {
-	local NAME=$1
-	if [ -n "${NAME}" ]; then
+	local MN=$1
+	if [ -n "${MN}" ]; then
 		local FUNC=${FUNCNAME[0]} MSG="None" STATUS_CONF STATUS_CONF_UTIL STATUS
 		MSG="Loading basic and util configuration!"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
@@ -91,12 +91,13 @@ function __gen_sh_module() {
 		TOOL_DEBUG=${config_gen_sh_module[DEBUGGING]}
 		TOOL_LOG=${config_gen_sh_module[LOGGING]}
 		TOOL_NOTIFY=${config_gen_sh_module[EMAILING]}
-		local DATE=$(date) VERSION=${config_gen_sh_module_util[VERSION]}
-		local COMPANY=${config_gen_sh_module_util[COMPANY]}
-		local AUTHOR=${config_gen_sh_module_util[AUTHOR]}
-		local MT=${config_gen_sh_module_util[MT]} SHF="${NAME}.sh"
-		local MTF="${GEN_SH_MODULE_HOME}/conf/${MT}" SHML TREE
-		local HASH="#" TAB="	" UMNAME=$(echo ${NAME} | tr 'a-z' 'A-Z')
+		local DATE=$(date) V=${config_gen_sh_module_util[VERSION]}
+		local COMPANY=${config_gen_sh_module_util[COMPANY]} SHF="${MN}.sh"
+		local AN=${config_gen_sh_module_util[AUTHOR_NAME]} H="#" SHML TREE
+		local AE=${config_gen_sh_module_util[AUTHOR_EMAIL]}
+		local MT=${config_gen_sh_module_util[MODULE_TEMPLATE]}
+		local MTF="${GEN_SH_MODULE_HOME}/conf/${MT}" T="	"
+		local UMN=$(echo ${MN} | tr 'a-z' 'A-Z')
 		MSG="Generating file [${SHF}]"
 		__info_debug_message "$MSG" "$FUNC" "$GEN_SH_MODULE_TOOL"
 		while read SHML
@@ -120,7 +121,7 @@ function __gen_sh_module() {
 		__check_tool "${TREE}"
 		STATUS=$?
 		if [ $STATUS -eq $SUCCESS ]; then
-			eval "${TREE} -L 3 ${SHF}"
+			eval "${TREE} -L 3 ."
 		fi
 		exit 0
 	fi
