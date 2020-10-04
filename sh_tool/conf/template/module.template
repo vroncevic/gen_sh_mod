@@ -19,11 +19,11 @@ ${H}
 ".${T}\\\${UTIL}/bin/logging.sh"
 ".${T}\\\${UTIL}/bin/send_mail.sh"
 
-"declare -A ${UMN}_USAGE=("
-"${T}[USAGE_TOOL]=\\\"__${MN}\\\""
-"${T}[USAGE_ARG1]=\\\"[ARG] Bash module argument\\\""
-"${T}[USAGE_EX_PRE]=\\\"# Example\\\""
-"${T}[USAGE_EX]=\\\"__${MN} ARG\\\""
+"declare -A ${UMN}_Usage=("
+"${T}[Usage_TOOL]=\\\"__${MN}\\\""
+"${T}[Usage_ARG1]=\\\"[ARG] Bash module argument\\\""
+"${T}[Usage_EX_PRE]=\\\"# Example\\\""
+"${T}[Usage_EX]=\\\"__${MN} ARG\\\""
 ")"
 
 "TOOL_DEBUG=\\\"false\\\""
@@ -66,7 +66,7 @@ ${T}${T}${H}" Code goes here"
 ${T}${T}${H}
 ${T}${T}"return \\\$SUCCESS"
 ${T}"fi"
-${T}"__usage ${UMN}_USAGE"
+${T}"__usage ${UMN}_Usage"
 ${T}"return \\\$NOT_SUCCESS"
 "}"
 

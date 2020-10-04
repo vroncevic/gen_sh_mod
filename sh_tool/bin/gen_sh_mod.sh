@@ -27,11 +27,11 @@ GEN_SH_MOD_CFG=${GEN_SH_MOD_HOME}/conf/${GEN_SH_MOD_TOOL}.cfg
 GEN_SH_MOD_UTIL_CFG=${GEN_SH_MOD_HOME}/conf/${GEN_SH_MOD_TOOL}_util.cfg
 GEN_SH_MOD_LOG=${GEN_SH_MOD_HOME}/log
 
-declare -A GEN_SH_MOD_USAGE=(
-    [USAGE_TOOL]="${GEN_SH_MOD_TOOL}"
-    [USAGE_ARG1]="[MODULE NAME] Name of Bash Script Module (file name)"
-    [USAGE_EX_PRE]="# Create FileCheck module"
-    [USAGE_EX]="${GEN_SH_MOD_TOOL} FileCheck"
+declare -A GEN_SH_MOD_Usage=(
+    [Usage_TOOL]="${GEN_SH_MOD_TOOL}"
+    [Usage_ARG1]="[MODULE NAME] Name of Bash Script Module (file name)"
+    [Usage_EX_PRE]="# Create FileCheck module"
+    [Usage_EX]="${GEN_SH_MOD_TOOL} FileCheck"
 )
 
 declare -A GEN_SH_MOD_LOGGING=(
@@ -126,7 +126,7 @@ function __gen_sh_module {
         fi
         exit 0
     fi
-    usage GEN_SH_MOD_USAGE
+    usage GEN_SH_MOD_Usage
     exit 128
 }
 
