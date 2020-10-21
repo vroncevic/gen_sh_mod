@@ -29,7 +29,7 @@ other information that should be provided before the modules are installed.
 
 Navigate to release **[page](https://github.com/vroncevic/gen_sh_mod/releases)** download and extract release archive.
 
-To install modules type the following:
+To install **gen_sh_mod** type the following:
 
 ```
 tar xvzf gen_sh_mod-x.y.z.tar.gz
@@ -99,3 +99,8 @@ Copyright (C) 2016 by [vroncevic.github.io/gen_sh_mod](https://vroncevic.github.
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.
 
+Lets help and support FSF.
+
+[![Free Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_sh_mod/dev/docs/fsf-logo_1.png)](https://my.fsf.org/)
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://my.fsf.org/donate/)
