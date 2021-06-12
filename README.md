@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_sh_mod/dev/docs/gen_sh_mod_logo.png" width="25%">
+
 # Generate shell module script for sh_util
 
 **gen_sh_mod** is shell tool for generating shell module.
@@ -32,11 +34,11 @@ Navigate to release **[page](https://github.com/vroncevic/gen_sh_mod/releases)**
 To install **gen_sh_mod** type the following:
 
 ```
-tar xvzf gen_sh_mod-x.y.z.tar.gz
-cd gen_sh_mod-x.y.z
-cp -R ~/sh_tool/bin/   /root/scripts/gen_sh_mod/ver.1.0/
-cp -R ~/sh_tool/conf/  /root/scripts/gen_sh_mod/ver.1.0/
-cp -R ~/sh_tool/log/   /root/scripts/gen_sh_mod/ver.1.0/
+tar xvzf gen_sh_mod-x.y.tar.gz
+cd gen_sh_mod-x.y
+cp -R ~/sh_tool/bin/   /root/scripts/gen_sh_mod/ver.x.y/
+cp -R ~/sh_tool/conf/  /root/scripts/gen_sh_mod/ver.x.y/
+cp -R ~/sh_tool/log/   /root/scripts/gen_sh_mod/ver.x.y/
 ```
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_sh_mod/dev/docs/setup_tree.png)
@@ -49,7 +51,7 @@ Or You can use docker to create image/container.
 
 ```
 # Create symlink for shell tool
-ln -s /root/scripts/gen_sh_mod/ver.1.0/bin/gen_sh_mod.sh /root/bin/gen_sh_mod
+ln -s /root/scripts/gen_sh_mod/ver.x.y/bin/gen_sh_mod.sh /root/bin/gen_sh_mod
 
 # Setting PATH
 export PATH=${PATH}:/root/bin/
@@ -69,7 +71,7 @@ gen_sh_mod change_user_permissions
 
 Code structure:
 ```
-.
+sh_tool/
 ├── bin/
 │   └── gen_sh_mod.sh
 ├── conf/
@@ -93,7 +95,7 @@ More documentation and info at:
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2016 by [vroncevic.github.io/gen_sh_mod](https://vroncevic.github.io/gen_sh_mod)
+Copyright (C) 2017 by [vroncevic.github.io/gen_sh_mod](https://vroncevic.github.io/gen_sh_mod)
 
 **gen_sh_mod** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
