@@ -2,7 +2,7 @@ ${H}"!/bin/bash"
 ${H}
 ${H}" @brief   ${MN}"
 ${H}" @version ${V}"
-${H}" @date	${DATE}"
+${H}" @date    ${DATE}"
 ${H}" @company ${COMPANY}"
 ${H}" @author  ${AN} <${AE}>"
 ${H}
@@ -19,11 +19,11 @@ ${H}
 ".${T}\\\${UTIL}/bin/logging.sh"
 ".${T}\\\${UTIL}/bin/send_mail.sh"
 
-"declare -A ${UMN}_Usage=("
-"${T}[Usage_TOOL]=\\\"__${MN}\\\""
-"${T}[Usage_ARG1]=\\\"[ARG] Bash module argument\\\""
-"${T}[Usage_EX_PRE]=\\\"# Example\\\""
-"${T}[Usage_EX]=\\\"__${MN} ARG\\\""
+"declare -A ${UMN}_USAGE=("
+"${T}[USAGE_TOOL]=\\\"__${MN}\\\""
+"${T}[USAGE_ARG1]=\\\"[ARG] Bash module argument\\\""
+"${T}[USAGE_EX_PRE]=\\\"# Example\\\""
+"${T}[USAGE_EX]=\\\"__${MN} ARG\\\""
 ")"
 
 "TOOL_DEBUG=\\\"false\\\""
@@ -35,7 +35,7 @@ ${H}" @brief  TODO"
 ${H}" @param  TODO"
 ${H}
 ${H}" @usage"
-${H}' @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+${H}" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 ${H}
 ${H}" local ARG=\\\"Some Argument\\\""
 ${H}" __${MN} \\\"\\\$ARG\\\""
@@ -47,7 +47,7 @@ ${H}" else"
 ${H}"${T}# false"
 ${H}" fi"
 ${H}
-"function __${MN}() {"
+"function __${MN} {"
 ${T}"local ARG=\\\$1"
 ${T}"if [ -n \\\"\\\${ARG}\\\" ]; then"
 ${T}${T}"local FUNC=\\\${FUNCNAME[0]} MSG=\\\"None\\\" STATUS"
@@ -66,7 +66,7 @@ ${T}${T}${H}" Code goes here"
 ${T}${T}${H}
 ${T}${T}"return \\\$SUCCESS"
 ${T}"fi"
-${T}"__usage ${UMN}_Usage"
+${T}"__usage ${UMN}_USAGE"
 ${T}"return \\\$NOT_SUCCESS"
 "}"
 
