@@ -6,7 +6,7 @@
 
 Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** code: **100%**.
 
-[![gen_sh_mod shell checker](https://github.com/vroncevic/gen_sh_mod/workflows/gen_sh_mod%20shell%20checker/badge.svg)](https://github.com/vroncevic/gen_sh_mod/actions?query=workflow%3A%22gen_sh_mod+shell+checker%22)
+[![gen_sh_mod_shell_checker](https://github.com/vroncevic/gen_sh_mod/actions/workflows/gen_sh_mod_shell_checker.yml/badge.svg)](https://github.com/vroncevic/gen_sh_mod/actions/workflows/gen_sh_mod_shell_checker.yml)
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
@@ -75,8 +75,6 @@ lrwxrwxrwx 1 root root 50 Dec  1 23:43 /root/bin/gen_sh_mod -> /root/scripts/gen
 
 Or You can use docker to create image/container.
 
-[![gen_sh_mod docker checker](https://github.com/vroncevic/gen_sh_mod/workflows/gen_sh_mod%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_sh_mod/actions?query=workflow%3A%22gen_sh_mod+docker+checker%22)
-
 ### Usage
 
 ```
@@ -95,13 +93,16 @@ Wed 01 Dec 2021 11:45:12 PM CET
 [check_root] Check permission for current session? [ok]
 [check_root] Done
 
-	                                                      
-	                        _                           _ 
-	  __ _  ___ _ __    ___| |__    _ __ ___   ___   __| |
-	 / _` |/ _ \ '_ \  / __| '_ \  | '_ ` _ \ / _ \ / _` |
-	| (_| |  __/ | | | \__ \ | | | | | | | | | (_) | (_| |
-	 \__, |\___|_| |_| |___/_| |_| |_| |_| |_|\___/ \__,_|
-	 |___/                                                
+                                                                                      
+                                          ██                                      ██  
+                                         ░██                                     ░██  
+    █████   █████  ███████         ██████░██            ██████████   ██████      ░██  
+   ██░░░██ ██░░░██░░██░░░██       ██░░░░ ░██████       ░░██░░██░░██ ██░░░░██  ██████  
+  ░██  ░██░███████ ░██  ░██      ░░█████ ░██░░░██       ░██ ░██ ░██░██   ░██ ██░░░██  
+  ░░██████░██░░░░  ░██  ░██       ░░░░░██░██  ░██       ░██ ░██ ░██░██   ░██░██  ░██  
+   ░░░░░██░░██████ ███  ░██ █████ ██████ ░██  ░██ █████ ███ ░██ ░██░░██████ ░░██████  
+    █████  ░░░░░░ ░░░   ░░ ░░░░░ ░░░░░░  ░░   ░░ ░░░░░ ░░░  ░░  ░░  ░░░░░░   ░░░░░░   
+   ░░░░░                                                                               
 	                                                      
 		Info   github.io/gen_sh_mod ver.2.0 
 		Issue  github.io/issue
@@ -163,17 +164,17 @@ sh_tool/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen_sh_mod/badge/?version=latest)](https://gen_sh_mod.readthedocs.io/projects/gen_sh_mod/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen_sh_mod/badge/?version=latest)](https://gen-sh-mod.readthedocs.io/projects/gen_sh_mod/en/latest/?badge=latest)
 
 More documentation and info at
-* [https://gen_sh_mod.readthedocs.io/en/latest/](https://gen_sh_mod.readthedocs.io/en/latest/)
+* [https://gen_sh_mod.readthedocs.io/en/latest/](https://gen-sh-mod.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 
 ### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2017 by [vroncevic.github.io/gen_sh_mod](https://vroncevic.github.io/gen_sh_mod)
+Copyright (C) 2017 - 2024 by [vroncevic.github.io/gen_sh_mod](https://vroncevic.github.io/gen_sh_mod)
 
 **gen_sh_mod** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
