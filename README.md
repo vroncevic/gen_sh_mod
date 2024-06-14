@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_sh_mod/dev/docs/gen_sh_mod_logo.png" width="25%">
-
 # Generate shell module script for sh_util
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_sh_mod/dev/docs/gen_sh_mod_logo.png" width="25%">
 
 **gen_sh_mod** is shell tool for generating shell module.
 
@@ -35,7 +35,7 @@ Navigate to release **[page](https://github.com/vroncevic/gen_sh_mod/releases)**
 
 To install **gen_sh_mod** type the following
 
-```
+```bash
 tar xvzf gen_sh_mod-x.y.tar.gz
 cd gen_sh_mod-x.y
 cp -R ~/sh_tool/bin/   /root/scripts/gen_sh_mod/ver.x.y/
@@ -44,7 +44,8 @@ cp -R ~/sh_tool/log/   /root/scripts/gen_sh_mod/ver.x.y/
 ```
 
 Self generated setup script and execution
-```
+
+```bash
 ./gen_sh_mod_setup.sh 
 
 [setup] installing App/Tool/Script gen_sh_mod
@@ -77,7 +78,7 @@ Or You can use docker to create image/container.
 
 ### Usage
 
-```
+```bash
 # Create symlink for shell tool
 ln -s /root/scripts/gen_sh_mod/ver.x.y/bin/gen_sh_mod.sh /root/bin/gen_sh_mod
 
@@ -146,7 +147,8 @@ Wed 01 Dec 2021 11:45:12 PM CET
 **gen_sh_mod** is based on MOP.
 
 Shell tool structure
-```
+
+```bash
 sh_tool/
 ├── bin/
 │   ├── center.sh
